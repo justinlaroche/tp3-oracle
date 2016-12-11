@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-05 17:18:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classe.Restaurant" table="restaurant" catalog="tpfinal" optimistic-lock="version">
+        <id name="idresto" type="java.lang.Integer">
+            <column name="Idresto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typecuisine" class="classe.Typecuisine" fetch="select">
+            <column name="Typecuisine" not-null="true" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="Nom" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="65535" not-null="true" />
+        </property>
+        <property name="siteweb" type="string">
+            <column name="Siteweb" length="50" not-null="true" />
+        </property>
+        <property name="idMembre" type="int">
+            <column name="idMembre" not-null="true" />
+        </property>
+        <property name="prixmoyen" type="long">
+            <column name="Prixmoyen" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="Image" length="50" not-null="true" />
+        </property>
+        <set name="commentaires" table="commentaire" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="Idresto" not-null="true" />
+            </key>
+            <one-to-many class="classe.Commentaire" />
+        </set>
+        <set name="membres" table="restaurantprefere" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Idrestaurant" not-null="true" />
+            </key>
+            <many-to-many entity-name="classe.Membre">
+                <column name="Idmembre" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

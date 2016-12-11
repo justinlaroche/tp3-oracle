@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./gabarit.xhtml">
+            <ui:define name="title">
+                Rechercher des restaurants - Rate My Resto
+            </ui:define> 
+
+            <ui:define name="content">
+                <h2>Rechercher un restaurant</h2>
+                <h:form id="CreationCompte" class="basic-grey">
+                    <h:outputLabel>Restaurant recherché (inscrivez un nom de restaurant ou un type de cuisine):</h:outputLabel>
+                    <h:inputText id="infoRestaurant" value="#{gestionRestos.infoRestoRecherche}"></h:inputText>
+                    <br />
+                    <h:commandButton value="Rechercher" action="#{gestionRestos.RechercherRestos()}" class="button" ></h:commandButton>
+                    <br/> <br/>
+                    <h:outputText value="#{gestionRestos.message}"></h:outputText> <br /> <br />                    
+                    <br /> <br /> <br />                    
+                    
+                <div class='contentCentered'>
+                    <table>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Site web</th>
+                            <th>Prix approximatif</th>
+                        </tr>
+                        <ui:repeat value="#{gestionRestos.resultatsRecherche}" var="resto">
+                        <tr>
+                            <td>#{resto[1]}</td> 
+                            <td>#{resto[7]}</td>
+                            <td>#{resto[2]}</td>
+                            <td>#{resto[3]}</td>
+                            <td>#{resto[6]}</td>
+                            <td> <h:link class="element" value="Détails"/> </td>
+                            <td> <h:link class="element" value="Modifier"/> </td>
+                            <td> <h:link class="element" value="Supprimer"/> </td>                           
+                        </tr>
+                        </ui:repeat>
+                    </table> 
+                </div>  
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

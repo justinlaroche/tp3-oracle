@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./gabarit.xhtml">
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <h1><h:outputText value="#{gestionRestos.getResto(1).nom}"></h:outputText></h1>
+            </ui:define>
+            <ui:define name="content">
+                <h2>Restaurants ajoutés récemment</h2>
+                <ui:repeat value="#{gestionRestos.lstCommentaire(1)}" var="com">
+                    <li>/#{com.contenu}, #{com.membre}</li> 
+                </ui:repeat>
+                <h2><h:outputText value="#{gestionRestos.MoyenneNote(1)}"></h:outputText></h2>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

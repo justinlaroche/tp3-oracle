@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./gabarit.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                 <h:form enctype="multipart/form-data" id="CreationCompte" class="basic-grey">
+
+                    <h:outputLabel>Votre commentaire</h:outputLabel>
+                    <h:inputText id="content" value="#{ajouterUtilisateur.contenu}"></h:inputText>
+                    <h:outputLabel>note</h:outputLabel>
+                    <h:inputText id="note" value="#{ajouterUtilisateur.note}"></h:inputText>
+                    <br />
+                    <h:commandButton value="ajouter" action="#{ajouterUtilisateur.ajoutCommentaire()}" class="button"></h:commandButton>
+                    <br />
+                    <h:outputText value="#{ajouterUtilisateur.message}"></h:outputText>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

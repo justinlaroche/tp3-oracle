@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-05 17:18:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classe.Membre" table="membre" catalog="tpfinal" lazy="false"> 
+        <id name="idmembre" type="java.lang.Integer">
+            <column name="Idmembre" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typemembre" class="classe.Typemembre" fetch="select">
+            <column name="Typemembre" not-null="true" />
+        </many-to-one>
+        <property name="email" type="string">
+            <column name="Email" length="50" not-null="true" />
+        </property>
+        <property name="mpd" type="string">
+            <column name="Mpd" length="50" not-null="true" />
+        </property>
+        <property name="nomutil" type="string">
+            <column name="Nomutil" length="50" not-null="true" />
+        </property>
+        <property name="restoPref" type="int">
+            <column name="RestoPref" not-null="true" />
+        </property>
+        <property name="typecuisinePref" type="int">
+            <column name="TypecuisinePref" not-null="true" />
+        </property>
+        <set name="restaurants" table="restaurantprefere" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Idmembre" not-null="true" />
+            </key>
+            <many-to-many entity-name="classe.Restaurant">
+                <column name="Idrestaurant" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="commentaires" table="commentaire" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="Idmembre" not-null="true" />
+            </key>
+            <one-to-many class="classe.Commentaire" />
+        </set>
+        <set name="typecuisines" table="typecuisinefavoris" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Idmembre" not-null="true" />
+            </key>
+            <many-to-many entity-name="classe.Typecuisine">
+                <column name="Idcuisine" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

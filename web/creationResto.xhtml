@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition template="./gabarit.xhtml">
+            <ui:define name="title">
+                Ajout d'un restaurant - Rate My Resto
+            </ui:define>
+
+            <ui:define name="content">
+                 <h:form enctype="multipart/form-data" id="CreationCompte" class="basic-grey">
+
+                    <h:outputLabel>Nom du restaurant:</h:outputLabel>
+                    <h:inputText id="nomResto" value="#{gestionRestos.nom}" required='true' requiredMessage="Veuillez entrer le nom du restaurant." validatorMessage="Nom invalide.">
+                        <f:validateLength maximum='255'/>
+                    </h:inputText>                                                         
+                    
+                    <h:outputLabel>Description:</h:outputLabel>
+                    <h:inputText id="description" value="#{gestionRestos.description}" required='true' requiredMessage="Veuillez entrer une description." validatorMessage="Description invalide.">
+                        <f:validateLength maximum='1000'/>
+                    </h:inputText>
+                    
+                    <h:outputLabel>Site web:</h:outputLabel>
+                    <h:inputText id="siteWeb" value="#{gestionRestos.siteWeb}" required='true' requiredMessage="Veuillez entrer un site web." validatorMessage="Site web invalide.">
+                        <f:validateLength maximum='255'/>
+                    </h:inputText> <br />
+                    
+                    <h:outputLabel>Prix approximatif:</h:outputLabel>
+                    <h:inputText id="prixApprox" value="#{gestionRestos.prixmoyen}" required='true' requiredMessage="Veuillez un prix moyen." validatorMessage="Prix approximatif invalide.">
+                        <f:validateDoubleRange minimum="0.0" maximum="10000.00" /> 
+                    </h:inputText> 
+                    
+                    <!-- <h:selectOneMenu value='#{gestionRestos.typecuisine}'>
+                        <f:selectItems value='#{gestionRestos.listerTypeCuisine()}' />
+                    </h:selectOneMenu> -->
+                    
+                    <h:inputFile value="#{gestionRestos.image}" /> <br /> <br /> 
+                                      
+                    <h:commandButton value="Ajouter" action="#{gestionRestos.ajouterResto()}" class="button"></h:commandButton> <br /> <br />
+                    <h:message for='nomResto' style='color:red'/> <br />
+                    <h:message for='description' style='color:red'/> <br />
+                    <h:message for='siteWeb' style='color:red'/> <br />
+                    <h:message for='prixApprox' style='color:red'/> <br />
+                    <h:outputText value="#{gestionRestos.message}"></h:outputText>
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

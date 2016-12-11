@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="./gabarit.xhtml">
+
+            <ui:define name="title">
+                Administration - Rate My Resto
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>Administration des restaurants</h2>
+                
+                <h:link class="element" value="Ajouter un restaurant" outcome="creationResto" />
+                
+                <div class='contentCentered'>
+                    <table>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Site web</th>
+                            <th>Prix approximatif</th>
+                        </tr>
+                        <ui:repeat value="#{gestionRestos.AfficherToutRestos()}" var="resto">
+                        <tr>
+                            <td>#{resto.nom}</td> 
+                            <td>#{resto.image}</td>
+                            <td>#{resto.description}</td>
+                            <td>#{resto.siteweb}</td>
+                            <td>#{resto.prixmoyen}</td>
+                            <td> <h:link class="element" value="Détails"/> </td>
+                            <td> <h:link class="element" value="Modifier"/> </td>
+                            <h:form>
+                                <td> <h:commandLink class="element" value="Supprimer" action="#{gestionRestos.supprimerResto(resto.idresto)}"/> </td> 
+                            </h:form>
+                        </tr>
+                        </ui:repeat>
+                    </table> <br />
+                    <h:outputText value="#{gestionRestos.message}"></h:outputText>   
+                </div>  
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

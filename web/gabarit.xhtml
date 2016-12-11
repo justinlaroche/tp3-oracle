@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <title>
+            <ui:insert name="title">Le titre</ui:insert>
+        </title> 
+    </h:head>
+
+    <h:body>
+        <div id="top">
+            <h1 class="titre">Rate My Resto</h1>
+        </div>
+        <ul id="flexmenu">
+            <h:link class="element" value="Accueil" outcome="index" />
+            <h:link class="element" value="Recherche de restaurant" outcome="recherche" />
+            <h:link class="element" value="Créer un compte" outcome="creationCompte" rendered="#{sessionScope.nomutil==null}"/>
+            <h:link class="element" value="Profil" outcome="modifCompte" rendered="#{sessionScope.nomutil!=null}"/>
+            <h:link class="element" value="Connexion" outcome="connexion" rendered="#{sessionScope.nomutil==null}"/>
+            <h:form>
+                <h:commandLink class="element" value="Déconnexion" action='#{membreUtil.logoutUser()}' rendered="#{sessionScope.nomutil!=null}" />
+            </h:form>
+            <h:link class="element" value="Administration" outcome="adminPage"></h:link> 
+            <h:outputText rendered="#{sessionScope.nomutil!=null}" value="Bienvenue #{sessionScope.nomutil}!"></h:outputText>
+            <!-- <h:link class="element" value="Voir un restaurant" outcome="ficheRestaurant" /> -->
+            <!-- <h:link class="element" value="creation commentaire" outcome="creationCommentaire" /> -->
+        </ul>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"> </ui:insert>
+        </div>
+
+        <div id="bottom">
+            @Rate My Resto - 2016 - Pascal Dion Laflamme/Alexandre Deschênes/Justin Laroche
+        </div>
+    </h:body>
+</html>

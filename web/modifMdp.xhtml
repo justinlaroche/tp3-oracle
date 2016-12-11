@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="./gabarit.xhtml">
+            <ui:define name="title">
+                Modification de votre mot de passe - Rate My Resto
+            </ui:define>
+            <ui:define name="content">
+                <h2>Modification de votre mot de passe</h2>
+                <h:form id="CreationCompte" class="basic-grey">
+                    <h:outputLabel>Nouveau mot de passe:</h:outputLabel>
+                    <h:inputSecret id="Mdp" value="#{ajouterUtilisateur.mdp}" required='true' requiredMessage="Veuillez entrer votre nouveau mot de passe." validatorMessage="Mot de passe invalide.">
+                        <f:validateLength maximum='50'/>
+                    </h:inputSecret>
+                    
+                    <h:outputLabel>Resaisir le nouveau mot de passe:</h:outputLabel>
+                    <h:inputSecret id="MdpConf" value="#{ajouterUtilisateur.mdpConf}" required='true' requiredMessage="Veuillez resaisir votre nouveau mot de passe.">
+                        <f:validateLength maximum='50'/>
+                    </h:inputSecret> <br /> <br />
+                    <h:commandButton value="Modifier" action="#{ajouterUtilisateur.modifierMembreMdp()}" class="button"></h:commandButton> <br /> <br />
+                    <h:message for='Mdp' style='color:red'/> <br />
+                    <h:message for='MdpConf' style='color:red'/> <br />
+                    <h:outputText value="#{ajouterUtilisateur.message}"></h:outputText>  
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

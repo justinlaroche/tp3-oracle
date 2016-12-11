@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-05 17:18:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classe.Typemembre" table="typemembre" catalog="tpfinal" optimistic-lock="version">
+        <id name="idtypemembre" type="java.lang.Integer">
+            <column name="Idtypemembre" />
+            <generator class="identity" />
+        </id>
+        <property name="typemem" type="string">
+            <column name="Typemem" length="20" not-null="true" />
+        </property>
+        <set name="membres" table="membre" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Typemembre" not-null="true" />
+            </key>
+            <one-to-many class="classe.Membre" />
+        </set>
+    </class>
+</hibernate-mapping>

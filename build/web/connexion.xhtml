@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+        <ui:composition template="gabarit.xhtml">           
+            <ui:define name="title">
+                Connexion - Rate My Resto
+            </ui:define>
+
+            <ui:define name="content">    
+                <h2>Se connecter</h2>
+                <h:form id="CreationCompte" class="basic-grey">
+                    <h:outputLabel>Nom d'utilisateur:</h:outputLabel>
+                    <h:inputText id="nomUtil" value="#{ajouterUtilisateur.nom}" required='true' requiredMessage="Veuillez entrer votre nom d'utilisateur." validatorMessage="Nom d'utilisateur invalide.">                       
+                        <f:validateLength maximum='50'/>
+                    </h:inputText>
+                    
+                    <h:outputLabel>Mot de passe:</h:outputLabel>
+                    <h:inputSecret id="Mdp" value="#{ajouterUtilisateur.mdp}" required='true' requiredMessage="Veuillez entrer votre mot de passe." validatorMessage="Mot de passe invalide.">                 
+                        <f:validateLength maximum='50'/>
+                    </h:inputSecret>
+                    
+                    <br /> <br />
+                    <h:commandButton value="Se connecter" action="#{ajouterUtilisateur.getMembreCon}" class="button"></h:commandButton>
+                    <br />
+                    <h:message for='nomUtil' style='color:red; text-decoration:none'/> <br />
+                    <h:message for='Mdp' style='color:red; text-decoration:none'/> <br />
+                    <h:outputText value="#{ajouterUtilisateur.message}" style='color:red'></h:outputText>                      
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

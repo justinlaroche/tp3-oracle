@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      <h:body>
+        <ui:composition template="./gabarit.xhtml"> 
+            <ui:define name="title">
+                Accueil - Rate My Resto
+            </ui:define>
+                       
+            <ui:define name="content">
+                <p class='contentCentered'>
+                    Bienvenue sur Rate My Resto! Ce site vous permettera de critiquer et de voir la critique de plusieurs restaurants.
+                </p> 
+                <h2>Restaurants récemment ajoutés</h2>
+                <div class='contentCentered'>
+                    <table>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                        </tr>
+                    <ui:repeat value="#{gestionRestos.AfficherRestosRecents()}" var="resto">
+                        <tr>
+                            <td>#{resto.nom}</td>
+                            <td>#{resto.image}</td>
+                            <td>#{resto.description}</td>
+                            <td> <h:link class="element" value="Détails"/> </td>
+                        </tr>
+                    </ui:repeat>
+                    </table> 
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

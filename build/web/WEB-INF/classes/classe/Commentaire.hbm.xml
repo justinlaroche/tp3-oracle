@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-05 17:18:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="classe.Commentaire" table="commentaire"  catalog="tpfinal" lazy="false">
+        <id name="idcommentaire" type="java.lang.Integer">
+            <column name="Idcommentaire" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="membre" class="classe.Membre" fetch="select">
+            <column name="Idmembre" not-null="true" />
+        </many-to-one>
+        <many-to-one name="restaurant" class="classe.Restaurant" fetch="select">
+            <column name="Idresto" not-null="true" />
+        </many-to-one>
+        <property name="contenu" type="string">
+            <column name="Contenu" length="65535" not-null="true" />
+        </property>
+        <property name="datecreation" type="date">
+            <column name="Datecreation" length="10" not-null="true" />
+        </property>
+        <property name="note" type="int">
+            <column name="Note" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
